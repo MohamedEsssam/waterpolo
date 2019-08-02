@@ -31,7 +31,7 @@ const coachSchema = new mongoose.Schema({
         type: String,
     },
     teamName: [{
-        playIn: {
+        train: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Team'
         }
