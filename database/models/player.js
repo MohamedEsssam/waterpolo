@@ -5,7 +5,8 @@ const playerSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
-        unique : true
+        unique : true,
+        primaryKey:true
     },
     password: {
         type: String,
@@ -19,6 +20,9 @@ const playerSchema = new mongoose.Schema({
     },
     sex: {
         type: String,
+    },
+    birthDate :{
+        type: String
     },
     status: {
         type: String,
@@ -37,7 +41,8 @@ plugin(AutoIncrement, {id:'order_seq',inc_field: 'order'});
 playerSchema.pre('save', function (next) {
     const user = this
  
-    bcrypt.hash(user.password, 10, function (error, encrypted) {
+    bcrypt.hash(user.password, 10, function (err, encrypted) {
+        if(err) throw err;
         user.password = encrypted
         next()
     })
