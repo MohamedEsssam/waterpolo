@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
+const bcrypt = require('bcryptjs')
 
 const playerSchema = new mongoose.Schema({
     username: {
@@ -35,13 +36,13 @@ const playerSchema = new mongoose.Schema({
     }
 });
 //plugin(AutoIncrement, {id:'order_seq',inc_field: 'order'});
-// playerSchema.pre('save', function (next) {
-//     const user = this
+playerSchema.pre('save', function (next) {
+    const user = this
  
-//     bcrypt.hash(user.password, 10, function (err, encrypted) {
-//         if(err) throw err;
-//         user.password = encrypted
-//         next()
-//     })
-// })
+    bcrypt.hash(user.password, 10, function (err, encrypted) {
+        if(err) throw err;
+        user.password = encrypted
+        next()
+    })
+})
 module.exports = mongoose.model('Player', playerSchema);

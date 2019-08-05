@@ -19,7 +19,7 @@ mongoose.connect(url, { useNewUrlParser: true, useFindAndModify: false, useCreat
 
 
 var player = new players({
-    username: "ahmed",
+    username: "ziad",
     password: "1234",
     fname : "Mohamed"
 });
