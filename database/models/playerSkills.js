@@ -1,18 +1,12 @@
 const mongoose = require('mongoose');
 
 const playerSkillsSchema = new mongoose.Schema({
-    playerID: [{
-        playerName: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Player'
-        }
-    }],
-    skillName: [{
-        ownSkills: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'skills'
-        }
-    }],
+    playerID: {
+            type: mongoose.Schema.ObjectId, ref: 'Player'
+    },
+    skillName: {
+            type: mongoose.Schema.ObjectId, ref: 'skills'
+    },
     grade : {
         type : String
     }

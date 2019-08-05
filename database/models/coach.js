@@ -30,21 +30,18 @@ const coachSchema = new mongoose.Schema({
     image: {
         type: String,
     },
-    teamName: [{
-        train: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Team'
+    teamName:{
+            type: mongoose.Schema.ObjectId, ref: 'Team'
         }
-    }]
 });
-plugin(AutoIncrement, {id:'order_seq',inc_field: 'order'});
-playerSchema.pre('save', function (next) {
-    const user = this
+//plugin(AutoIncrement, {id:'order_seq',inc_field: 'order'});
+// playerSchema.pre('save', function (next) {
+//     const user = this
  
-    bcrypt.hash(user.password, 10, function (err, encrypted) {
-        if(err) throw err;
-        user.password = encrypted
-        next()
-    })
-})
+//     bcrypt.hash(user.password, 10, function (err, encrypted) {
+//         if(err) throw err;
+//         user.password = encrypted
+//         next()
+//     })
+// })
 module.exports = mongoose.model('coach', coachSchema);

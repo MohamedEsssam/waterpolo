@@ -1,12 +1,10 @@
 const mongoose = require('mongoose');
 
 const excuseSchema = new mongoose.Schema({
-    playerID: [{
-        playerName: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Player'
+    player: {
+            type: mongoose.Schema.ObjectId, ref: 'Player'
         }
-    }],
+    ,
     description : {
         type : String
     },
