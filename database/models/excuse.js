@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const excuseSchema = new mongoose.Schema({
     player: {
             type: mongoose.Schema.ObjectId, ref: 'Player'
-        }
-    ,
+        },
     description : {
         type : String
     },

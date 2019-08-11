@@ -3,9 +3,18 @@ const expressEdge = require('express-edge')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const fileUpload = require('express-fileupload')
+const expressSession = require('express-session');
+const connectMongo = require('connect-mongo')
+const connectFlash = require('connect-flash')
 
 const players = require('./database/models/player')
 const teams = require('./database/models/team')
+
+const loginPage = require('./controller/login')
+const userLogin = require('./controller/userLogin')
+const registerPage = require('./controller/register')
+const storeUser = require('./controller/storeUser')
+
 
 
 const url = 'mongodb://localhost/waterpolo'
@@ -18,27 +27,26 @@ mongoose.connect(url, { useNewUrlParser: true, useFindAndModify: false, useCreat
 
 
 
-var player = new players({
-    username: "ziad",
-    password: "1234",
-    fname : "Mohamed"
-});
-player.save();
+// var player = new players({
+//     username: "omar",
+//     password: "1111"
+// });
+// player.save();
 
-var team = new teams({
-    captinStartDate : "21/7/2019",
-    teamName: "Ahly",
-    captinId: player._id
-});
+// var team = new teams({
+//     captinStartDate : "21/7/2019",
+//     teamName: "smoha",
+//     captinId: player._id
+// });
 
-team.save(function(error) {
-    if (!error) {
-        teams.find({}).populate('captinId')
-            .exec(function(error, posts) {
-                console.log(JSON.stringify(posts, null, "\t"))
-            })
-    }
-});
+// team.save(function(error) {
+//     if (!error) {
+//         teams.find({}).populate('captinId').where('teamName').equals('smoha')
+//             .exec(function(error, posts) {
+//                 console.log(JSON.stringify(posts, null, "\t"))
+//             })
+//     }
+// });
 
 
 const app = new express()
@@ -53,6 +61,14 @@ app.set('views', `${__dirname}/views`)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended : true}))
+
+
+app.get('/auth/login',loginPage)
+app.get('/auth/register', registerPage)
+
+app.post('/user/login',userLogin)
+app.post('/user/register', storeUser)
+
 
 
 app.listen(3000, ()=>{
