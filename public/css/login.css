@@ -55,7 +55,8 @@ color:#333;
 
 }
 .forgot a:hover {
-color:#5cb85c;
+text-decoration: none;
+color:#757b80;
 }
 
 #inner-wrapper, #contact-us .contact-form, #contact-us .our-address {
@@ -78,7 +79,4 @@ color:#5cb85c;
       border-right-color: rgb(243, 170, 12);
       border-right-style: none;
       border-right-width: medium;
-}
-#newUser{
-  font-family: Verdana, Geneva, Tahoma, sans-serif ;
 }
