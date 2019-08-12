@@ -36,8 +36,8 @@ const coachSchema = new mongoose.Schema({
             type: mongoose.Schema.ObjectId, ref: 'Team'
         }
 });
-plugin(AutoIncrement, {id:'order_seq',inc_field: 'order'});
-playerSchema.pre('save', function (next) {
+//plugin(AutoIncrement, {id:'order_seq',inc_field: 'order'});
+coachSchema.pre('save', function (next) {
     const user = this
  
     bcrypt.hash(user.password, 10, function (err, encrypted) {

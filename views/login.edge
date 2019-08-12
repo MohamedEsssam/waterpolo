@@ -27,9 +27,16 @@
               <input type="password" class="form-control" placeholder="Password"style="border-radius: 100px" name="password">
             </div>
           </div>
-            <button type="submit" class="btn">Login</button>
+          <div>
+              <select v-model="selected" name="selectedType" id="selectedType" style="border-radius: 100px;padding-bottom: 2px; width: 90px; outline: none; cursor: pointer; text-align-last:center;background-color: transparent;color: grey" required>
+                      <option disabled>choose who you are  </option>
+                      <option value="player" name="typeSelect">player</option>
+                      <option value="coach" name="typeSelect">coach</option>
+                    </select>
+          </div>
+            <button type="submit" class="btn" style="position:relative; top: 15px;">Login</button>
             <div class="forgot" style="font-family: Verdana, Geneva, Tahoma, sans-serif; position: relative; top: 10px; text-decoration: none;">
-            <a href="/auth/register"id="newUser">Create new user ?</a>
+            <a href="/auth/register"id="newUser"style="position:relative; top: 15px;">Create new user ?</a>
             </div>
         </form>
       </article>
