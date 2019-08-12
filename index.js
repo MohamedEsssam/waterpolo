@@ -57,6 +57,12 @@ app.use(fileUpload())
 
 app.use(expressEdge)
 
+app.use(connectFlash());
+
+app.use(expressSession({
+    secret: 'secret'
+}));
+
 app.set('views', `${__dirname}/views`)
 
 app.use(bodyParser.json())
