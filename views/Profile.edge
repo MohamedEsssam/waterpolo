@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Profile </title>
+    </head>
+ <link rel="stylesheet" type="text/css" href="/css/navBar.css">
+ <link rel="stylesheet" type="text/css" href="/css/Profile.css">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+    <div class="topnav">
+        <a class="active" href="#Profile">Profile</a>
+        <div class="layout">
+        <a href="#Skiils">view Skills</a>
+        <a href="homePage">Home</a>
+        <a href="#LogOut">LogOUt</a>
+        <img src="profile.png" alt="playerImage" srcset="">
+    </div>
+      </div> 
+      <div class="container">
+        <div class="overlay">
+            <a href="#" class="icon" title="User Profile">
+                <i class="fa fa-user"></i>
+                <txt class="font">Edit</txt>
+            </a>
+        </div>
+    </div>      
+    <table>
+        <tr>
+
+            <th>First Name</th>
+        <td>{{posts.fname}}</th>
+        </tr>
+        <tr>
+            <th>Last Name</th>
+        <td>{{posts.lname}}</td>
+
+        </tr>
+        <tr>
+            <th>User Name</th>
+        <td>{{posts.username}}</td>
+        </tr>
+        <tr>
+            <th>ID</th>
+        <td>{{posts._id}}</td>
+        </tr>
+        <tr>
+            <th>Date Of Birth</th>
+            <td>B_date</td>
+
+        </tr>
+        <tr>
+            <th>Team</th>
+            <td>Team</td>
+
+        </tr>
+        <tr>
+            <th>Gender</th>
+        <td>{{posts.sex}}</td>
+        </tr>
+        <tr>
+            <th>Status</th>
+            <td>status</td>
+        </tr>
+        
+       
+    </table>
+      
+</body>         
+</html>

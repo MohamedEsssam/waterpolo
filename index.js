@@ -10,14 +10,16 @@ const connectFlash = require('connect-flash')
 const players = require('./database/models/player')
 const teams = require('./database/models/team')
 
+const Profile = require('./controller/Profile')
 const loginPage = require('./controller/login')
 const userLogin = require('./controller/userLogin')
 const registerPage = require('./controller/register')
 const storeUser = require('./controller/storeUser')
+const homePage = require('./controller/homePage')
 
 
-
-const url = 'mongodb://localhost/waterpolo'
+const url = 'mongodb://localhost/waterpolo';
+const mongoStore = connectMongo(expressSession)
 
 
 mongoose.connect(url, { useNewUrlParser: true, useFindAndModify: false, useCreateIndex: true }, (err, db)=>{
@@ -28,8 +30,11 @@ mongoose.connect(url, { useNewUrlParser: true, useFindAndModify: false, useCreat
 
 
 // var player = new players({
-//     username: "omar",
-//     password: "1111"
+//     fname: "ahmed",
+//     lname:"saeed",
+//     sex : "male",
+//     username: "ahmed",
+//     password: "111"
 // });
 // player.save();
 
@@ -50,6 +55,15 @@ mongoose.connect(url, { useNewUrlParser: true, useFindAndModify: false, useCreat
 
 
 const app = new express()
+app.use(expressSession({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true,
+    store : new mongoStore({
+        mongooseConnection : mongoose.connection
+    })
+}));
+
 
 app.use(express.static('public'))
 
@@ -59,18 +73,16 @@ app.use(expressEdge)
 
 app.use(connectFlash());
 
-app.use(expressSession({
-    secret: 'secret'
-}));
-
 app.set('views', `${__dirname}/views`)
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended : true}))
 
-
+app.get('/auth/Profile',Profile)
+app.get('/auth/homePage',homePage)
 app.get('/auth/login',loginPage)
 app.get('/auth/register', registerPage)
+
 
 app.post('/user/login',userLogin)
 app.post('/user/register', storeUser)

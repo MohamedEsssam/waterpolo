@@ -11,6 +11,9 @@ module.exports = (req, res)=>{
             bcrypt.compare(password, user.password, (err, result)=>{
                 if(result){
                     console.log('login')
+                    req.session.userId = user._id
+                    console.log(req.session.userId)
+                    res.redirect('/auth/homePage')
                 }else{
                     console.log('canot login')
                     res.redirect('/auth/login')
@@ -25,8 +28,10 @@ module.exports = (req, res)=>{
         coach.findOne({username},(err, user)=>{
             if(user){
                 bcrypt.compare(password, user.password, (err, result)=>{
-                    if(result){
+                    if(result){ 
                         console.log('coach login')
+                        req.session.userId = coach._id
+                        res.redirect('/auth/homePage')
                     }else{
                         console.log('coach canot login')
                         res.redirect('/auth/login')
