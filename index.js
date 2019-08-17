@@ -17,6 +17,8 @@ const registerPage = require('./controller/register')
 const storeUser = require('./controller/storeUser')
 const homePage = require('./controller/homePage')
 const logout = require('./controller/logout')
+const editPage = require('./controller/editPage')
+const editUser = require('./controller/editUser')
 
 
 const url = 'mongodb://localhost/waterpolo';
@@ -84,10 +86,12 @@ app.get('/auth/homePage',homePage)
 app.get('/auth/login',loginPage)
 app.get('/auth/register', registerPage)
 app.get('/auth/logout',logout)
+app.get('/auth/edit', editPage)
 
 
 app.post('/user/login',userLogin)
 app.post('/user/register', storeUser)
+app.post('/user/edit', editUser)
 
 
 

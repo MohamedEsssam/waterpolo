@@ -12,10 +12,11 @@ module.exports = (req, res)=>{
                 if(result){
                     console.log('login')
                     req.session.userId = user._id
-                    console.log(req.session.userId)
+                    req.session.username = user.username
                     res.redirect('/auth/homePage')
                 }else{
                     console.log('canot login')
+                    req.flash('userNotFound', 'password or username is wrong')
                     res.redirect('/auth/login')
                 }
             })

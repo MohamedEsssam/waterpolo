@@ -19,60 +19,41 @@
         <a href="#Skiils">view Skills</a>
         <a href="homePage">Home</a>
         <a href="/auth/logout">LogOUt</a>
+    </div>
+</div> 
+        <form action="/user/edit" method="post" enctype="multipart/form-data">
         <img src="profile.png" alt="playerImage" srcset="">
-    </div>
-      </div> 
-      <div class="container">
-        <div class="overlay">
-            <a href="#" class="icon" title="User Profile">
-                <i class="fa fa-user"></i>
-                <txt class="font">Edit</txt>
-            </a>
-        </div>
-    </div>
-    <div>
-        <a href="/auth/edit">Edit</a>
-        </div>      
-    <table>
+      <table>
         <tr>
-
             <th>First Name</th>
-        <td>{{posts.fname}}</th>
+        <td><input type="text" class="form-control" placeholder="first name"style="border-radius: 100px" name="fname" id="fname">
         </tr>
         <tr>
             <th>Last Name</th>
-        <td>{{posts.lname}}</td>
+        <td><input type="text" class="form-control" placeholder="last name"style="border-radius: 100px" name="lname" id="lname"></td>
 
         </tr>
         <tr>
             <th>User Name</th>
-        <td>{{posts.username}}</td>
-        </tr>
-        <tr>
-            <th>ID</th>
-        <td>{{posts._id}}</td>
+        <td><input type="text" class="form-control" placeholder="username"style="border-radius: 100px" name="username" id="username"></td>
         </tr>
         <tr>
             <th>Date Of Birth</th>
-            <td>B_date</td>
+            <td><input type="text" class="form-control" placeholder="Birth date"style="border-radius: 100px" name="birthDate" id="birthDate"></td>
 
         </tr>
-        <tr>
-            <th>Team</th>
-            <td>Team</td>
-
-        </tr>
-        <tr>
             <th>Gender</th>
-        <td>{{posts.sex}}</td>
+        <td><input type="text" class="form-control" placeholder="Gender"style="border-radius: 100px" name="sex" id="sex"></td>
         </tr>
         <tr>
             <th>Status</th>
-            <td>status</td>
+            <td><input type="text" class="form-control" placeholder="status"style="border-radius: 100px" name="status" id="status"></td>
+
         </tr>
         
-       
     </table>
+    <button type="submit">submit</button>
+</form>
       
 </body>         
 </html>

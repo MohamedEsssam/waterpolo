@@ -5,13 +5,13 @@ const bcrypt = require('bcryptjs')
 const playerSchema = new mongoose.Schema({
     username: {
         type: String,
-        required: true,
+        required: [true, 'provide your username'],
         unique : true,
         primaryKey:true
     },
     password: {
         type: String,
-        required: true
+        required: [true, 'provide your password']
     },
     fname: {
         type: String,

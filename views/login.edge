@@ -14,6 +14,17 @@
   <div class="col-md-4 col-md-offset-4" id="login">
     <section id="inner-wrapper" class="login">
       <article>
+        @if(errors.length>0)
+        <ul>
+          @each(err in errors)
+          <li class="list-group-item text-danger">
+            {{err}}
+          </li>
+            
+          @endeach
+        </ul>
+          
+        @endif
         <form action="/user/login" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <div class="input-group">
