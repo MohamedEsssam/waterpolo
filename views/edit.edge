@@ -23,14 +23,31 @@
 </div> 
         <form action="/user/edit" method="post" enctype="multipart/form-data">
         <img src="profile.png" alt="playerImage" srcset="">
+        @if(emptyInfo.length>0)
+          @each(empty in emptyInfo)
+            <ul>
+                <li>
+                    {{empty}}
+                </li>
+            </ul>
+          @endeach
+        @endif
+        @if(exists.length>0)
+        @each(exist in exists)
+          <ul>
+          <li>{{exist}}</li>
+          </ul>
+        @endeach
+          
+        @endif
       <table>
         <tr>
             <th>First Name</th>
-        <td><input type="text" class="form-control" placeholder="first name"style="border-radius: 100px" name="fname" id="fname">
+        <td><input type="text" class="form-control" value="{{data.fname || ''}}" placeholder="first name"style="border-radius: 100px" name="fname" id="fname">
         </tr>
         <tr>
             <th>Last Name</th>
-        <td><input type="text" class="form-control" placeholder="last name"style="border-radius: 100px" name="lname" id="lname"></td>
+        <td><input type="text" class="form-control" value="{{data.lname || ''}}" placeholder="last name"style="border-radius: 100px" name="lname" id="lname"></td>
 
         </tr>
         <tr>
