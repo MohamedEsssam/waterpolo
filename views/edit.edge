@@ -22,7 +22,11 @@
     </div>
 </div> 
         <form action="/user/edit" method="post" enctype="multipart/form-data">
-        <img src="profile.png" alt="playerImage" srcset="">
+            <div>
+            <img src="{{posts.image}}" alt="playerImage" srcset=""width="500px" height="400px">
+                    <input type="file" name="image" >
+                </div>
+            
         @if(emptyInfo.length>0)
           @each(empty in emptyInfo)
             <ul>

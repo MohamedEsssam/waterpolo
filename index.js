@@ -92,6 +92,9 @@ app.get('/auth/edit', editPage)
 app.post('/user/login',userLogin)
 app.post('/user/register', storeUser)
 app.post('/user/edit', editUser)
+app.post('/send', (req, res)=>{
+    console.log('hello ajax')
+})
 
 
 
